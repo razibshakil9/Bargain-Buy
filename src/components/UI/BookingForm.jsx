@@ -58,6 +58,7 @@ const BookingForm = () => {
         <FormGroup >
             <textarea row={5} type='textarea' className='textarea' placeholder='Write a message'></textarea>
         </FormGroup>
+        <Button className='booking_form-btn' type='submit'>Submit</Button>
     </Form>
 }
 
