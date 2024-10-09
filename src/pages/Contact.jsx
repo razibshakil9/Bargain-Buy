@@ -42,7 +42,7 @@ const Contact = () => {
                             <FormGroup className='contact_form'>
                                 <textarea rows='5' placeholder='Message' className='textarea'></textarea>
                             </FormGroup>
-                            <button className='btn contact_btn' type='submit'>Send Message</button>
+                            <button className=' contact_btn' type='submit'>Send Message</button>
                         </Form>
                     </Col>
                     <Col lg='5' md='5'>
