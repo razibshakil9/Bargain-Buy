@@ -22,6 +22,11 @@
 .textarea:focus,.booking_form input:focus,.booking_form select:focus{
     outline: none;
 }
+.booking_form-btn{
+    background: #000d6b;
+    color:#fff;
+    padding: 8px 15px;
+}
 @media only screen and(ma-width:768px) {
     .booking_form{
         width: 100%;
