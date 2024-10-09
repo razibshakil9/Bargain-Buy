@@ -1,0 +1,17 @@
+.services_item span i{
+    font-size: 2.5rem;
+    color: #f9a826;
+}
+.services_item h6{
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: .3s;
+}
+.services_item h6:hover{
+    color: #f9a826;
+}
+@media only screen and(max-width:768px) {
+    .services_item h6{
+        font-size: 1.1rem;
+    }
+}

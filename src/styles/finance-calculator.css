@@ -1,0 +1,33 @@
+/* .container {
+    max-width: 700px;
+  }
+  
+  .shadow-lg {
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .bg-white {
+    background-color: #ffffff;
+  }
+  
+  .text-primary {
+    color: #007bff;
+  }
+  
+  .mt-4 {
+    margin-top: 1.5rem;
+  }
+  
+  .mb-4 {
+    margin-bottom: 1.5rem;
+  } */
+.btn-primary{
+  background: #000d6b;
+  color: #fff;
+  border: none;
+}
+.btn-primary:hover{
+  background: #000d6b;
+  color: #fff;
+  border: none;
+}

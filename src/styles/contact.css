@@ -1,0 +1,19 @@
+.social_link-icon{
+    text-decoration: none;
+    color: #000d6b;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+.contact_btn{
+    padding: 7px 15px;
+    background: #000d6b;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+.contact_btn:hover{
+    background: #fff !important;
+    color: #000d6b !important;
+    border: 1px solid #000d6b;
+}
