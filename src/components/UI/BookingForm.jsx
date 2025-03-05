@@ -1,65 +1,105 @@
-import React from 'react'
-import '../../styles/booking-form.css'
-import { Form, FormGroup } from 'reactstrap'
+import React, { useState } from "react";
+import "../../styles/booking-form.css";
+import { Form, FormGroup } from "reactstrap";
+import { useNavigate } from "react-router-dom";
 
 const BookingForm = () => {
-    const submitHandler = event => {
-        event.preventDefault();
+  const navigate = useNavigate();
+  const isAuthenticated = localStorage.getItem("userToken"); // Check if user is logged in
+
+  const initialData = {
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    message: "",
+  };
+
+  const [formData, setFormData] = useState(initialData);
+
+  // Handle input changes
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Handle form submission
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    if (!isAuthenticated) {
+      alert("You must be logged in to submit this form!");
+      navigate("/login");
+      window.scrollTo(0, 0);
+      return;
     }
-    return <Form onSubmit={submitHandler}>
-        <FormGroup className='booking_form d-inline-block me-4 mb-4'>
-            <input type="text" placeholder='First Name' />
-        </FormGroup>
-        <FormGroup className='booking_form d-inline-block ms-1 mb-4'>
-            <input type="text" placeholder='Last Name' />
-        </FormGroup>
 
-        <FormGroup className='booking_form d-inline-block me-4 mb-4'>
-            <input type="email" placeholder='email' />
-        </FormGroup>
-        <FormGroup className='booking_form d-inline-block ms-1 mb-4'>
-            <input type="number" placeholder='Phone Number' />
-        </FormGroup>
+    console.log("Form Data Submitted:", formData);
+    alert("Your data has been submitted successfully!");
 
-        {/* <FormGroup className='booking_form d-inline-block me-4 mb-4'>
-            <input type="text" placeholder='From Address' />
-        </FormGroup>
-        <FormGroup className='booking_form d-inline-block ms-1 mb-4'>
-            <input type="text" placeholder='To Address' />
-        </FormGroup> */}
+    // ✅ Reset form fields after successful submission
+    setFormData(initialData);
+  };
 
-        {/* <FormGroup className='booking_form d-inline-block me-4 mb-4'>
-            <select name="" id="">
-                <option value="1 person">1 Person</option>
-                <option value="2 person">2 Person</option>
-                <option value="3 person">3 Person</option>
-                <option value="4 person">4 Person</option>
-                <option value="5+ person">5+ Person</option>
-            </select>
-        </FormGroup>
+  return (
+    <Form onSubmit={submitHandler}>
+      <FormGroup className="booking_form d-inline-block me-4 mb-4">
+        <input
+          type="text"
+          name="firstName"
+          placeholder="First Name"
+          value={formData.firstName}
+          onChange={handleChange}
+          required
+        />
+      </FormGroup>
+      <FormGroup className="booking_form d-inline-block ms-1 mb-4">
+        <input
+          type="text"
+          name="lastName"
+          placeholder="Last Name"
+          value={formData.lastName}
+          onChange={handleChange}
+          required
+        />
+      </FormGroup>
 
-        <FormGroup className='booking_form d-inline-block ms-1 mb-4'>
-            <select name="" id="">
-                <option value="1 luggage">1 luggage</option>
-                <option value="2 luggage">2 luggage</option>
-                <option value="3 luggage">3 luggage</option>
-                <option value="4 luggage">4 luggage</option>
-                <option value="5+ luggage">5+ luggage</option>
-            </select>
-        </FormGroup> */}
+      <FormGroup className="booking_form d-inline-block me-4 mb-4">
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+      </FormGroup>
+      <FormGroup className="booking_form d-inline-block ms-1 mb-4">
+        <input
+          type="number"
+          name="phoneNumber"
+          placeholder="Phone Number"
+          value={formData.phoneNumber}
+          onChange={handleChange}
+          required
+        />
+      </FormGroup>
 
-        {/* <FormGroup className='booking_form d-inline-block me-4 mb-4'>
-            <input type="date" placeholder='Journey Date' />
-        </FormGroup>
-        <FormGroup className='booking_form d-inline-block ms-1 mb-4'>
-            <input type="time" placeholder='Journey Time' className='time_picker' />
-        </FormGroup> */}
+      <FormGroup>
+        <textarea
+          rows={5}
+          name="message"
+          className="textarea"
+          placeholder="Write a message"
+          value={formData.message}
+          onChange={handleChange}
+        ></textarea>
+      </FormGroup>
 
-        <FormGroup >
-            <textarea row={5} type='textarea' className='textarea' placeholder='Write a message'></textarea>
-        </FormGroup>
-        <button className='booking_form-btn' type='submit'>Submit</button>
+      <button className="booking_form-btn" type="submit">
+        Submit
+      </button>
     </Form>
-}
+  );
+};
 
-export default BookingForm
+export default BookingForm;
